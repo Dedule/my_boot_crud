@@ -1,8 +1,7 @@
-package crud.controllers;
+package com.example.my_boot_crud.controllers;
 
-import crud.models.User;
-import crud.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.my_boot_crud.models.User;
+import com.example.my_boot_crud.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;

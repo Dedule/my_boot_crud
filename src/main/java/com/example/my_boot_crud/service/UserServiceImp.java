@@ -1,47 +1,48 @@
-package crud.service;
+package com.example.my_boot_crud.service;
 
-import crud.dao.UserDAO;
-import crud.models.User;
+import com.example.my_boot_crud.models.User;
+import com.example.my_boot_crud.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class UserServiceImp implements UserService{
-    private final UserDAO userDAO;
+public class UserServiceImp implements UserService {
 
-    public UserServiceImp(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    private final UserRepository userRepository;
+
+    public UserServiceImp(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Transactional
     @Override
     public List<User> getUserList() {
-        return userDAO.index();
+        return userRepository.findAll();
     }
 
     @Transactional
     @Override
     public void save(User user) {
-        userDAO.save(user);
+        userRepository.save(user);
     }
 
     @Transactional
     @Override
     public User show(Long id) {
-        return userDAO.show(id);
+        return userRepository.getReferenceById(id);
     }
 
     @Transactional
     @Override
     public void update(Long id, User updUser) {
-        userDAO.update(id, updUser);
+        userRepository.save(updUser);
     }
 
     @Transactional
     @Override
     public void delete(Long id) {
-        userDAO.delete(id);
+        userRepository.deleteById(id);
     }
 }
